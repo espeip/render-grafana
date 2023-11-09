@@ -1,0 +1,19 @@
+{
+  "type": "page",
+  "title": "${title}",
+  "ancestors": [
+    {
+      "id": "${ancestors}",
+      "type":"page"
+    }
+  ],
+  "space": {
+    "key": "${space}"
+  },
+  "body": {
+    "storage": {
+      "value": "${body}",
+      "representation": "storage"
+    }
+  }
+}

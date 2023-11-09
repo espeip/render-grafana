@@ -1,0 +1,17 @@
+server:
+  port: 8083
+
+grafana:
+  host: grafana.skillbox.pro
+  token: glsa_G5p6Kq4wLsm9GgEawgR6U064bQckFvgF_0608e388
+
+confluence:
+  host: confluence.skillbox.pro
+  token: ODk5MTc4OTM2MjMxOqqjysM/BRTTMmdZq00cRYok1R/P
+  space: QA
+  templatePath: reports/newReport.json
+  numberedPath: reports/numberedPage.json
+  graphicsPath: reports/graphics.xml
+
+directory:
+  pictures: pictures

@@ -1,0 +1,13 @@
+{
+  "isEnabled": true,
+  "numberFormatField": "decimal",
+  "startingNumberField": "1",
+  "startingHeadingField": "H1",
+  "skipHeadingField": "",
+  "customFormatFieldH1": "Chapter [h1.decimal]",
+  "customFormatFieldH2": "[h1.decimal].[h2.upper-latin]",
+  "customFormatFieldH3": "",
+  "customFormatFieldH4": "",
+  "customFormatFieldH5": "",
+  "customFormatFieldH6": ""
+}
