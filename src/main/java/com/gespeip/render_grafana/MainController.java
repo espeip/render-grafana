@@ -34,7 +34,6 @@ public class MainController {
 
     @Autowired
     private Confluence confluence;
-    private static Logger log = LoggerFactory.getLogger(MainController.class);
 
     @Autowired
     private Grafana grafana;
@@ -51,27 +50,37 @@ public class MainController {
 
 
     @GetMapping("/test")
-    @ResponseBody
     public String testPrint(
             @RequestParam String project,
             @RequestParam String namePage,
             @RequestParam String uid,
             @RequestParam String testType
-    ) throws URISyntaxException {
+    ) throws URISyntaxException, InterruptedException {
 
-        grafana.createImages(uid);
-        //Dashboard dashboard = grafana.createDashboard("QoxmTt27z");
-        confluence.createPage(testType, project, namePage, grafana.getDashboard());
-        confluence.uploadPictures();
+        asyncService.runProject(project,namePage,uid,testType);
+
+//        grafana.createImages(uid);
+//        //Dashboard dashboard = grafana.createDashboard("QoxmTt27z");
+//        confluence.createPage(testType, project, namePage, grafana.getDashboard());
+//        confluence.uploadPictures();
 
 
-        return project + namePage + uid + testType;
+        return "wait";
+    }
+    @GetMapping("/checkStatus")
+    @ResponseBody
+    public String checkProcessStatus() {
+        if (asyncService.isProcessCompleted()) {
+            return "completed";
+        } else {
+            return "in_progress";
+        }
     }
 
-    @GetMapping("/test2")
-    public String testPrint() throws InterruptedException, ExecutionException {
-        CompletableFuture<String> result = asyncService.getResultPage();
-        return  "wait";
+    @GetMapping("/newPage")
+    public String finalPage(Model model){
+        model.addAttribute("pageId", asyncService.getPageId());
+        return  "result";
     }
 
     public static void zipFile(String path) throws IOException {

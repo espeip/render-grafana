@@ -22,5 +22,25 @@
         </div>
     </div>
 </footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function checkStatusAndRedirect() {
+        $.ajax({
+            url: '/checkStatus',
+            method: 'GET',
+            success: function(response) {
+                if (response === 'completed') {
+                    window.location.href = '/newPage'; // Переход на другую страницу
+                } else {
+                    setTimeout(checkStatusAndRedirect, 1000);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Обработка ошибок
+            }
+        });
+    }
 
+    checkStatusAndRedirect(); // Запуск проверки статуса при загрузке страницы
+</script>
 </html>

@@ -26,7 +26,7 @@ public class Confluence {
 
     private String pageId;
 
-    public void createPage(String templatePageId, String ancestors, String title, Dashboard dashboard) {
+    public String createPage(String templatePageId, String ancestors, String title, Dashboard dashboard) {
         String templateBody = extractorService
                 .getBody(requestsService
                         .getTemplateReport(templatePageId))
@@ -39,6 +39,7 @@ public class Confluence {
         String newPageResponse = requestsService.createPage(page);
         pageId = extractorService.getPageID(newPageResponse);
         requestsService.numberedSetTrue(pageId);
+        return pageId;
     }
     public void uploadPictures() throws URISyntaxException {
         for(File file : filesUtils.getPictures())
