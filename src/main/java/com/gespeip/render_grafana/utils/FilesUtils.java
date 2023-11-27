@@ -1,14 +1,11 @@
 package com.gespeip.render_grafana.utils;
 
 import com.google.common.io.Resources;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Arrays;
 
 @Component

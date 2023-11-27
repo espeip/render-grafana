@@ -2,6 +2,7 @@ package com.gespeip.render_grafana.utils;
 
 import com.gespeip.render_grafana.confluence_part.Confluence;
 import com.gespeip.render_grafana.grafana_part.Grafana;
+import com.gespeip.render_grafana.grafana_part.dtos.Dashboard;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -42,7 +43,7 @@ public class AsyncService {
                            String uid,
                            String testType) throws URISyntaxException, InterruptedException {
         grafana.createImages(uid);
-        //Dashboard dashboard = grafana.createDashboard("QoxmTt27z");
+        //Dashboard dashboard = grafana.createDashboard(uid);
         pageId = confluence.createPage(testType, project, namePage, grafana.getDashboard());
         confluence.uploadPictures();
         processCompleted = true;

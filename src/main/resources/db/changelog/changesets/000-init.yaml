@@ -1,0 +1,172 @@
+databaseChangeLog:
+  - changeSet:
+      id: 000-1
+      author: Sergei Tarasov
+      changes:
+        - createTable:
+            tableName: services
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar
+              - column:
+                  name: owner
+                  type: varchar
+              - column:
+                  name: grafana_dashboard
+                  type: varchar
+              - column:
+                  name: description
+                  type: varchar
+        - createTable:
+            tableName: profile
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+        - createTable:
+            tableName: test_type
+            columns:
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: conf_id
+                  type: varchar
+              - column:
+                  name: description
+                  type: varchar
+        - createTable:
+            tableName: tests
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: test_type
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: profile_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: tests_services
+            columns:
+              - column:
+                  name: test_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: service_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: service_version
+                  type: varchar
+        - createTable:
+            tableName: responsibility
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar
+              - column:
+                  name: position
+                  type: varchar
+        - createTable:
+            tableName: result_items
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: label
+                  type: varchar
+              - column:
+                  name: count
+                  type: int
+              - column:
+                  name: 90_pctl
+                  type: double
+              - column:
+                  name: 95_pctl
+                  type: double
+              - column:
+                  name: 99_pctl
+                  type: double
+              - column:
+                  name: min
+                  type: int
+              - column:
+                  name: max
+                  type: int
+              - column:
+                  name: percent_error
+                  type: double
+              - column:
+                  name: throughput
+                  type: double
+        - createTable:
+            tableName: results
+            columns:
+              - column:
+                  name: run_id
+                  autoIncrement: true
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: run_start
+                  type: int
+              - column:
+                  name: run_end
+                  type: int
+              - column:
+                  name: test_id
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar
+              - column:
+                  name: conf_id
+                  type: varchar
+              - column:
+                  name: responsibility_id
+                  type: int
+                  constraints:
+                    nullable: false

@@ -15,3 +15,12 @@ confluence:
 
 directory:
   pictures: pictures
+
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://pglb01.qa.skillbox.pro:5432/loadtest
+    username: qa_autoreport
+    password: aoKoo1pog6

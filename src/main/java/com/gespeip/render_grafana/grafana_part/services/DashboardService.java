@@ -2,6 +2,7 @@ package com.gespeip.render_grafana.grafana_part.services;
 
 import com.gespeip.render_grafana.grafana_part.configs.GrafanaUnirestConfig;
 import com.gespeip.render_grafana.grafana_part.dtos.*;
+import com.gespeip.render_grafana.postges_part.repositories.ResultRepository;
 import com.jayway.jsonpath.JsonPath;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
@@ -19,6 +20,8 @@ public class DashboardService {
 
     @Autowired
     private GrafanaUnirestConfig guc;
+    @Autowired
+    private ResultRepository repository;
 
     private String json;
     private String uid;
@@ -165,13 +168,15 @@ public class DashboardService {
 
     //получение времени начала
     public String getTimeFrom() {
-        String path = "$.dashboard.time.from";
-        return JsonPath.read(json, path);
+//        String path = "$.dashboard.time.from";
+//        return JsonPath.read(json, path);
+        return String.valueOf(repository.findByRunId(56).getStartTime());
     }
     //получение времени конца
     public String getTimeTo() {
-        String path = "$.dashboard.time.to";
-        return JsonPath.read(json, path);
+//        String path = "$.dashboard.time.to";
+//        return JsonPath.read(json, path);
+        return String.valueOf(repository.findByRunId(56).getEndTime());
     }
 
 

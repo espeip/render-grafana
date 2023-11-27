@@ -42,8 +42,8 @@ public class Dashboard {
                 .append("orgId=1").append("&")
                 .append("from=").append(timeFrom).append("&")
                 .append("to=").append(timeTo).append("&")
-                .append("width=1000").append("&")
-                .append("height=500").append("&")
+                .append("width=1500").append("&")
+                .append("height=750").append("&")
                 .append("frameborder=0").append("&")
                 .append(panel.printerPath())
                 .toString();
