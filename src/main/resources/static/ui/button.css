@@ -20,7 +20,7 @@
 
 .button--stroke-main {
      border-color: var(--stroke-accent-color);
-    background-color: transparent;
+     background-color: transparent;
      color: var(--text-main-color);
 }
 
@@ -36,4 +36,8 @@
     color: var(--text-disable-color);
     background-color: var(--bg-secondary-accent-color);
     cursor: default;
+}
+
+.button--stretched {
+    width: 100%;
 }

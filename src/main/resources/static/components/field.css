@@ -49,7 +49,7 @@
 }
 
 .field__input:-webkit-autofill,
-.field__input:-webkit-autofill:hover,
+.field__input:-webkit-autofill:not(:disabled):hover,
 .field__input:-webkit-autofill:focus-visible {
     -webkit-text-fill-color: var(--text-main-color);
     -webkit-box-shadow: 0 0 0 1000px var(--bg-secondary-color) inset;
