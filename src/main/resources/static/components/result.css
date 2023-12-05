@@ -13,3 +13,7 @@
 .result__text {
     margin-bottom: 32px;
 }
+
+.result__link {
+    margin-bottom: 16px;
+}

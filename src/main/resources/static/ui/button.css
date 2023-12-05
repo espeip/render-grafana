@@ -18,6 +18,12 @@
     user-select: none;
 }
 
+.button--stroke-main {
+     border-color: var(--stroke-accent-color);
+    background-color: transparent;
+     color: var(--text-main-color);
+}
+
 .button:hover,
 .button:focus-visible {
     border-color: var(--accent-always-black-color);

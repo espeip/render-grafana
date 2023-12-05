@@ -28,8 +28,6 @@
     opacity: 1; /* Firefox */
 }
 
-
-
 .field__input:focus-visible {
     border-color: var(--stroke-secondary-color);
     background-color: var(--bg-main-color);
@@ -60,6 +58,7 @@
 .field__input:disabled {
     border-color: var(--stroke-main-color);
     color: var(--text-disable-color);
+    -webkit-text-fill-color: var(--text-disable-color);
     background-color: var(--bg-secondary-color);
 }
 

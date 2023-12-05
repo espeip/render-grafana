@@ -29,9 +29,7 @@
     </h1>
 
     <div class="main__content">
-        <form
-                class="main__form form"
-        >
+        <form class="main__form form">
             <div class="form__field select">
                 <select
                         id="project"
@@ -137,7 +135,10 @@
 
                     <div class="wait__progress"></div>
 
-                    <button class="wait__button button">
+                    <button
+                            type="button"
+                            class="wait__button button"
+                    >
                             <span class="f f--m f--18">
                                 Отменить
                             </span>
@@ -166,7 +167,11 @@
                                 Перейти на страницу отчета
                             </span>
                     </a>
-                    <button class="wait__button button">
+
+                    <button
+                            type="button"
+                            class="result__return-button button button--stroke-main"
+                    >
                             <span class="f f--m f--18">
                                 Вернуться на главную
                             </span>
@@ -286,6 +291,7 @@
         const inputs = form.querySelectorAll('.input');
         const formButton = form.querySelector('.form__button');
         const waitButton = form.querySelector('.wait__button');
+        const returnButton = form.querySelector('.result__return-button');
 
         const toggleInfo = (evt) => {
             evt.preventDefault();
@@ -295,8 +301,7 @@
 
                 startTime = new Date();
 
-                // 300 (ms) — время, которое ждем, пока бэк подставит в разметку количество отчетов
-                setTimeout(updateProgress, 300);
+                updateProgress();
                 run(formData);
                 handleForm();
 
@@ -311,8 +316,14 @@
             formButton.classList.toggle('form__button--hidden');
         }
 
+        const resetPage = () => {
+            toggleInfo();
+            form.reset();
+        }
+
         form.addEventListener('submit', toggleInfo);
         waitButton.addEventListener('click', toggleInfo);
+        returnButton.addEventListener('click', resetPage);
     </script>
 </body>
 </html>
