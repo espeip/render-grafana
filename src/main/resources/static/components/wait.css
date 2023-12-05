@@ -1,0 +1,32 @@
+.wait {
+    padding: 32px 20px;
+}
+
+.wait__pic {
+    margin: 0 auto 24px;
+}
+
+.wait__text {
+    margin-bottom: 24px;
+}
+
+.wait__progress {
+    position: relative;
+    height: 8px;
+    margin-bottom: 24px;
+    border: 1px solid var(--stroke-main-color);
+    border-radius: 4px;
+    background-color: var(--accent-always-white-color);
+    overflow: hidden;
+}
+
+.wait__progress::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: var(--progress);
+    height: 100%;
+    background-color: var(--accent-brand-color);
+    content: '';
+}

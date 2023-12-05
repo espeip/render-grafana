@@ -1,0 +1,11 @@
+.footer {
+    color: var(--text-main-color);
+    background-color: var(--bg-accent-color);
+}
+
+.footer__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 96px;
+}

@@ -1,0 +1,18 @@
+[data-theme='light'] {
+    --text-main-color: #000;
+    --text-secondary-color: #666;
+    --text-disable-color: #b8b8b8;
+    --bg-main-color: #fff;
+    --bg-secondary-color: #f5f5f5;
+    --bg-secondary-accent-color: #ebebeb;
+    --stroke-main-color: #e0e0e0;
+    --stroke-secondary-color: #b8b8b8;
+    --accent-brand-color: #3d3bff;
+    --accent-always-white-color: #fff;
+    --accent-always-black-color: #000;
+}
+
+[data-theme='dark'] {
+    --text-main-color: #e0e0e0;
+    --bg-accent-color: #333;
+}

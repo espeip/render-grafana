@@ -1,0 +1,69 @@
+.select {
+    position: relative;
+}
+
+.select::after {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 10.3904L3.13807 5.52851C2.87772 5.26816 2.45561 5.26816 2.19526 5.52851C1.93491 5.78886 1.93491 6.21097 2.19526 6.47132L7.43432 11.7104C7.74673 12.0228 8.25327 12.0228 8.56569 11.7104L13.8047 6.47132C14.0651 6.21097 14.0651 5.78886 13.8047 5.52851C13.5444 5.26816 13.1223 5.26816 12.8619 5.52851L8 10.3904Z' fill='black'/%3E%3C/svg%3E%0A");
+    transform: translateY(-50%);
+    content: '';
+}
+
+.select__label {
+    position: absolute;
+    top: 20px;
+    left: 18px;
+    color: var(--text-secondary-color);
+    font-size: 11px;
+    line-height: 1;
+    transition: all .2s ease-in-out;
+    pointer-events: none;
+    transform: translateY(-80%);
+}
+
+.select__input {
+    display: block;
+    width: 100%;
+    height: 56px;
+    padding: 23px 18px 10px;
+    border: 1px solid var(--stroke-main-color);
+    border-radius: 10px;
+    overflow: hidden;
+    color: var(--text-main-color);
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: var(--bg-secondary-color);
+    box-shadow: none;
+    transition: border-color .2s ease-in-out;
+    appearance: none;
+    cursor: pointer;
+}
+
+.select__input:disabled {
+    border-color: var(--stroke-main-color);
+    color: var(--text-disable-color);
+    background-color: var(--bg-secondary-color);
+    cursor: default;
+}
+
+.select__input:focus-visible {
+    border-color: var(--stroke-secondary-color);
+    background-color: var(--bg-main-color);
+    outline: none;
+}
+
+.select__input:not(:disabled):hover {
+    border-color: var(--stroke-secondary-color);
+}
+
+.select__input:disabled ~ .select__label {
+    color: var(--text-disable-color);
+}

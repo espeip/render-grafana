@@ -29,24 +29,15 @@ public class AsyncService {
 
 
     @Async
-    public CompletableFuture<String> getWaitingPage() throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
-            Thread.sleep(1000);
-            System.out.println("wait");
-        }
-        return CompletableFuture.completedFuture("waiting page");
-    }
-
-    @Async
     public void runProject(String project,
-                           String namePage,
+                           String runId,
                            String uid,
                            String testType) throws URISyntaxException, InterruptedException {
-        grafana.createImages(uid);
-        //Dashboard dashboard = grafana.createDashboard(uid);
-        pageId = confluence.createPage(testType, project, namePage, grafana.getDashboard());
+        grafana.createImages(uid, runId);
+        pageId = confluence.createPage(testType, project, grafana.getDashboard());
         confluence.uploadPictures();
         processCompleted = true;
+        System.out.println("completed");
         Thread.sleep(3000);
         processCompleted = false;
     }

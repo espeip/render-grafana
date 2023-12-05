@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 000-2
+      author: Sergei Tarasov
+      changes:
+        - renameColumn:
+            tableName: result_items
+            oldColumnName: id
+            newColumnName: run_id

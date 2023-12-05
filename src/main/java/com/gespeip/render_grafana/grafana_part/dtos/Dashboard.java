@@ -16,7 +16,6 @@ public class Dashboard {
 
     private String title;
     private String uid;
-    //private Variables variables;
     private List<Row> rows;
     private List<Panel> panels;
     private String timeFrom;
@@ -29,7 +28,6 @@ public class Dashboard {
         timeTo = dashboardService.getTimeTo();
         panels = dashboardService.getPanels();
         rows = dashboardService.getRows();
-        //variables = new Variables(dashboardService.getVars());
     }
 
 

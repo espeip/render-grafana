@@ -1,0 +1,33 @@
+.button {
+    display: block;
+    width: max-content;
+    padding: 17px 48px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    text-align: center;
+    color: var(--accent-always-white-color);
+    font: inherit;
+    font-weight: 500;
+    line-height: 20px;
+    background-color: var(--accent-brand-color);
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    transition: background-color 150ms ease-out,
+    color 150ms ease-out,
+    border-color 150ms ease-out;
+    user-select: none;
+}
+
+.button:hover,
+.button:focus-visible {
+    border-color: var(--accent-always-black-color);
+    color: var(--accent-always-white-color);
+    background-color: var(--accent-always-black-color);
+    outline: none;
+}
+
+.button:disabled {
+    color: var(--text-disable-color);
+    background-color: var(--bg-secondary-accent-color);
+    cursor: default;
+}

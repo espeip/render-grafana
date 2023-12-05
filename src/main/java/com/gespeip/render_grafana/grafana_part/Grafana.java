@@ -17,13 +17,13 @@ public class Grafana {
     private PrintService printService;
     private Dashboard dashboard;
 
-    public void createImages(String uid) {
-        dashboard = createDashboard(uid);
+    public void createImages(String uid, String runId) {
+        dashboard = createDashboard(uid, runId);
         printService.init(dashboard);
         printService.print();
     }
-    public Dashboard createDashboard(String uid) {
-        dashboardService.init(uid);
+    public Dashboard createDashboard(String uid, String runId) {
+        dashboardService.init(uid, runId);
         return new Dashboard(dashboardService);
     }
 }

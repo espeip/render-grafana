@@ -1,0 +1,17 @@
+@font-face {
+    font-weight: 400;
+    font-family: 'Graphik';
+    font-style: normal;
+    src: url('https://cdn.skillbox.pro/wbd-front/skillbox-static/general/fonts/GraphikLCTT-Regular.woff2')
+        format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-weight: 500;
+    font-family: 'Graphik';
+    font-style: normal;
+    src: url('https://cdn.skillbox.pro/wbd-front/skillbox-static/general/fonts/GraphikLCTT-Medium.woff2')
+        format('woff2');
+    font-display: swap;
+}

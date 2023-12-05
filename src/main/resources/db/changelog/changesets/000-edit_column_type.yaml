@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 000-2
+      author: Sergei Tarasov
+      changes:
+        - modifyDataType:
+            tableName: results
+            columnName: test_id
+            newDataType: INTEGER

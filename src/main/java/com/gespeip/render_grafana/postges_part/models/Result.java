@@ -13,8 +13,8 @@ public class Result {
     private int runId;
 
     @Column(name = "run_start")
-    private int startTime;
+    private Long startTime;
 
     @Column(name = "run_end")
-    private int endTime;
+    private Long endTime;
 }

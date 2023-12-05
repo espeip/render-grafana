@@ -41,6 +41,7 @@ public class TemplateService {
                 .readResource(graphicsPath)
                 .replace("${image}",panel.toString());
     }
+
     private String getRow(Row row) {
         StringBuilder sb = new StringBuilder();
         sb.append("<p class=\\\"auto-cursor-target\\\"><br /></p><ac:structured-macro ac:name=\\\"expand\\\" ac:schema-version=\\\"1\\\" ac:macro-id=\\\"a933e70a-76f5-4d26-99ce-5d1d3e05e79b\\\"><ac:parameter ac:name=\\\"title\\\">\\\"")
@@ -51,6 +52,7 @@ public class TemplateService {
         sb.append("</ac:rich-text-body></ac:structured-macro><p class=\\\"auto-cursor-target\\\"><br /></p>");
         return sb.toString();
     }
+
     private String getPanel(Panel panel) {
         return
                 new StringBuilder()

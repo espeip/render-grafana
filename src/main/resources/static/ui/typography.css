@@ -1,0 +1,40 @@
+/* h */
+.h {
+    margin-top: 0;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.h--3 {
+    font-size: 40px;
+    line-height: 42px;
+}
+
+/* p */
+.p {
+    margin-top: 0;
+}
+
+.p--2 {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+/* f */
+.f {
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.f--m {
+    font-weight: 500;
+}
+
+.f--12 {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.f--18 {
+    font-size: 18px;
+}

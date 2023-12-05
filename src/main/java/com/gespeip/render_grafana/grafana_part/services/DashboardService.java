@@ -25,8 +25,9 @@ public class DashboardService {
 
     private String json;
     private String uid;
+    private String runId;
 
-
+    // получение JSON по UID дашборда и помещение в переменную json
     private void setJson(String uid) {
         json = guc.getUnirest().get("/api/dashboards/uid/" + uid)
                 .asString()
@@ -34,10 +35,19 @@ public class DashboardService {
     }
 
     //Получение основного JSON и добавление его в переменную
+    public void init(String uid, String runId) {
+        this.runId = runId;
+        this.uid = uid;
+        setJson(uid);
+    }
+
+
+    //Получение основного JSON и добавление его в переменную
     public void init(String uid) {
         this.uid = uid;
         setJson(uid);
     }
+
 
     //получения уникального id Дашборда в Grafana
     public String getUid() {
@@ -79,13 +89,15 @@ public class DashboardService {
         return rows;
     }
 
-    //получение переменной для repeatOption
+    //получение переменной для repeatOption по названию панели
     private String getRepeatOption(String title) {
         String path = String.format("$.dashboard.panels[?(@.title == '%s')].repeat", title);
         return JsonPath.read(json, path)
                 .toString()
                 .replaceAll("[^A-Za-zА-Яа-я]", "");
     }
+
+    //получение переменной для repeatOption по id панели
     private String getRepeatOption(int id) {
         String path = String.format("$.dashboard.panels[?(@.id == '%d')].repeat", id);
         return JsonPath.read(json, path)
@@ -137,6 +149,7 @@ public class DashboardService {
         return panels;
     }
 
+    //получение списка с переменными
     public List<Variable> getVars() {
         String path = "$.dashboard.templating.list[*].name";
         List<Variable> variables = new ArrayList<>();
@@ -145,6 +158,7 @@ public class DashboardService {
         return variables;
     }
 
+    //получение списка переменных для ситуаций с repeatOptions
     public List<Variable> getVarsForRepeatOptions(String key, String value) {
         String path = String.format("$.dashboard.templating.list[?(@.name != '%s')].name", key);
         List<Variable> variables = new ArrayList<>();
@@ -154,7 +168,7 @@ public class DashboardService {
         return variables;
     }
 
-
+    //получение значения переменной по ее названию
     public List<String> getCurrentVarsPerVarName(String varName) {
         String path = String.format("$.dashboard.templating.list[?(@.name=='%s')].current.value", varName);
 
@@ -166,18 +180,34 @@ public class DashboardService {
                 return  (List<String>) resultList.get(0);
     }
 
-    //получение времени начала
+    //получение времени начала из grafana
     public String getTimeFrom() {
-//        String path = "$.dashboard.time.from";
-//        return JsonPath.read(json, path);
-        return String.valueOf(repository.findByRunId(56).getStartTime());
-    }
-    //получение времени конца
-    public String getTimeTo() {
-//        String path = "$.dashboard.time.to";
-//        return JsonPath.read(json, path);
-        return String.valueOf(repository.findByRunId(56).getEndTime());
+        String path = "$.dashboard.time.from";
+
+        if (runId.isEmpty())
+            return JsonPath.read(json, path);
+        else
+            return getTimeFrom(Integer.parseInt(runId));
     }
 
+    //получение времени конца из grafana
+    public String getTimeTo() {
+        String path = "$.dashboard.time.to";
+
+        if (runId.isEmpty())
+            return JsonPath.read(json, path);
+        else
+            return getTimeTo(Integer.parseInt(runId));
+    }
+
+    //получение времени начала теста по runId
+    public String getTimeFrom(int runId) {
+        return String.valueOf(repository.findByRunId(runId).getStartTime());
+    }
+
+    //получение времени конца теста по runId
+    public String getTimeTo(int runId) {
+        return String.valueOf(repository.findByRunId(runId).getEndTime());
+    }
 
 }

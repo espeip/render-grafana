@@ -1,0 +1,15 @@
+.result {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 32px 20px;
+}
+
+.result__pic {
+    margin: 0 auto 24px;
+}
+
+.result__text {
+    margin-bottom: 32px;
+}

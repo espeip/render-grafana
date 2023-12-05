@@ -1,57 +1,318 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <title th:text="${title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" th:href="@{style.css}">
 </head>
-<body style="background-size: cover;" class="d-flex flex-column min-vh-100">
-    <form class="p-4 p-md-5 border rounded-3 bg-light" action="/test" method="get">
-        <div class="col-12">
-            <label for="project" class="position-absolute px-2 small text-secondary">Выберите проект</label>
-            <select class="form-select pt-4" id="project" name="project">
-                <option value="" selected disabled>Проект</option>
-                <option value="154230604">Помойка</option>
-                <option value="189966465">LMS Core + Академика</option>
-                <option value="154230696">WebDev.Академика</option>
-                <option value="154230633">WebDev.Passport</option>
-                <option value="154071056">Вебинар.Ивлеева + Малахов</option>
-            </select>
-        </div>
-        <div class="form-floating my-3">
-            <input type="text" name="namePage" class="form-control" id="namePage">
-            <label for="namePage">Название страницы</label>
-        </div>
-        <div class="form-floating my-3">
-            <input type="text" name="uid" class="form-control" id="uid">
-            <label for="uid">UID дашборда в Grafana</label>
-        </div>
-        <div class="col-12">
-            <label for="testType" class="position-absolute px-2 small text-secondary">Выберите тип теста</label>
-            <select class="form-select pt-4" id="testType" name="testType">
-                <option value="" selected disabled>Тип теста</option>
-                <option value="187835276">Эталонный тест</option>
-                <option value="187835276">Тест поиска максимума</option>
-                <option value="187835276">Тест стабильности</option>
-                <option value="187835276">Стресс-тест</option>
-                <option value="187835276">Сравнительный тест</option>
-            </select>
-        </div>
+<body data-theme="light">
+<header class="header">
+    <div class="header__wrapper container">
+        <a
+                href="https://skillbox.ru"
+                target="_blank"
+        >
+            <img
+                    src="https://cdn.skillbox.pro/wbd-front/skillbox-static/skillbox.svg"
+                    width="108"
+                    height="24"
+                    alt="Skillbox"
+                    class="header-logo__image"
+            >
+        </a>
+    </div>
+</header>
 
-        <div class="checkbox mb-3">
-        </div>
-        <button class="w-100 btn btn-lg btn-primary"  type="submit">Render of Grafana</button>
-        <hr class="my-4">
-    </form>
-</body>
-<footer class="mt-auto">
-    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-1 border-top ">
-        <div class="col-md-4 d-flex align-items-center ">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-body-light text-decoration-none lh-1">
-                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-            </a>
-            <span class="mb-3 mb-md-0 text-body-light">© Skillbox, 2023</span>
-        </div>
+<main class="main container">
+    <h1 class="main__title h h--3">
+        Получить отчёт
+    </h1>
+
+    <div class="main__content">
+        <form
+                class="main__form form"
+        >
+            <div class="form__field select">
+                <select
+                        id="project"
+                        name="project"
+                        required
+                        class="select__input input"
+                >
+                    <option value="" selected disabled>Проект</option>
+                    <option value="154230604">Помойка</option>
+                    <option value="189966465">LMS Core + Академика</option>
+                    <option value="154230696">WebDev.Академика</option>
+                    <option value="154230633">WebDev.Passport</option>
+                    <option value="154071056">Вебинар.Ивлеева + Малахов</option>
+                </select>
+
+                <label
+                        for="project"
+                        class="select__label"
+                >
+                    Выберите проект
+                </label>
+            </div>
+
+            <div class="form__field field">
+                <label class="field__label">
+                    <input
+                            type="text"
+                            name="pageName"
+                            id="pageName"
+                            placeholder=" "
+                            required
+                            class="field__input input"
+                    >
+
+                    <span class="field__name">
+                            Название страницы
+                        </span>
+                </label>
+            </div>
+
+            <div class="form__field field">
+                <label class="field__label">
+                    <input
+                            type="text"
+                            name="uid"
+                            id="uid"
+                            placeholder=" "
+                            required
+                            class="field__input input"
+                    >
+
+                    <span class="field__name">
+                            UID дашборда в Grafana
+                        </span>
+                </label>
+            </div>
+
+            <div class="form__field select">
+                <select
+                        id="testType"
+                        name="testType"
+                        required
+                        class="select__input input"
+                >
+                    <option value="" selected disabled>Тип теста</option>
+                    <option value="187835276">Эталонный тест</option>
+                    <option value="187835276">Тест поиска максимума</option>
+                    <option value="187835276">Тест стабильности</option>
+                    <option value="187835276">Стресс-тест</option>
+                    <option value="187835276">Сравнительный тест</option>
+                </select>
+
+                <label
+                        for="testType"
+                        class="select__label"
+                >
+                    Выберите тип теста
+                </label>
+            </div>
+
+            <button
+                    type="submit"
+                    class="form__button button"
+            >
+                    <span class="f f--m f--18">
+                        Render of Grafana
+                    </span>
+            </button>
+
+            <div class="form__info">
+                <div class="form__wait wait">
+                    <img
+                            width="200"
+                            height="100"
+                            th:src="@{/img/wait.gif}"
+                            alt="Том из «Том и Джерри» ходит кругами в ожидании отчёта"
+                            class="form__pic wait__pic"
+                    >
+
+                    <p class="wait__text p p--2">
+                        Ваш отчет очень важен для нас. Пожалуйста, дождитесь сборки отчета, это займет несколько минут.
+                    </p>
+
+                    <div class="wait__progress"></div>
+
+                    <button class="wait__button button">
+                            <span class="f f--m f--18">
+                                Отменить
+                            </span>
+                    </button>
+                </div>
+
+                <div class="form__result result">
+                    <img
+                            width="200"
+                            height="100"
+                            th:src="@{/img/result.gif}"
+                            alt="Джерри и утёнок из «Том и Джерри» радостно танцуют"
+                            class="form__pic result__pic"
+                    >
+
+                    <p class="result__text p p--2">
+                        Ваш отчет готов.
+                    </p>
+
+                    <a
+                            th:href="@{'https://confluence.skillbox.pro/pages/viewpage.action?pageId=' + ${pageId}}"
+                            target="_blank"
+                            class="result__link button"
+                    >
+                            <span class="f f--m f--18">
+                                Перейти на страницу отчета
+                            </span>
+                    </a>
+                    <button class="wait__button button">
+                            <span class="f f--m f--18">
+                                Вернуться на главную
+                            </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer data-theme="dark" class="footer">
+    <div class="footer__wrapper container">
+        <span class="footer__copyright f f--12">© Skillbox, 2023</span>
     </div>
 </footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        const form = document.querySelector('.form');
+
+        // progress
+        let startTime;
+        let interval;
+
+        const progressBar = form.querySelector('.wait__progress');
+
+        const updateProgress = () => {
+            const oneReportTime = 6000; // в ms
+            const reportsCount = 8; // number, подставляется бэком в разметку
+            const totalTime = oneReportTime * reportsCount;
+
+            interval = setInterval(() => {
+                const endTime = new Date();
+                const timeDiff = endTime - startTime; // в ms
+
+                if (timeDiff < totalTime) {
+                    const progress = (timeDiff * 100 / totalTime).toFixed(3);
+                    progressBar.setAttribute('style', `--progress: ${progress}%`);
+                } else {
+                    progressBar.setAttribute('style', `--progress: 100%`);
+
+                    clearInterval(interval);
+                    interval = null;
+                }
+            }, 100);
+        }
+
+        // run
+        const run = (formData) => {
+          const project = formData.get('project');
+          const pageName = formData.get('pageName');
+          const uid = formData.get('uid');
+          const testType = formData.get('testType');
+
+        $.ajax({
+            url: `/run?project=${project}&runId=${pageName}&uid=${uid}&testType=${testType}`,
+            method: 'GET',
+            success: function(response) {
+                if (response === 'ok') {
+
+                } else {
+
+                }
+            },
+            error: function(xhr, status, error) {
+                // Обработка ошибок
+            }
+        });
+        }
+
+        // status
+        const handleForm = () => {
+
+          $.ajax({
+            url: `/checkStatus`,
+            method: 'GET',
+            success: function(response) {
+                if (response === 'completed') {
+                    const waitBlock = form.querySelector('.form__wait');
+
+                    waitBlock.classList.add('form__wait--hidden');
+                    progressBar.removeAttribute('style');
+                    getPageId();
+
+                } else {
+                    setTimeout(handleForm, 5000);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Обработка ошибок
+            }
+          });
+        }
+
+        //getPageId
+        const getPageId = () => {
+          $.ajax({
+            url: `/getPageId`,
+            method: 'GET',
+            success: function(response) {
+              // Обновляем содержимое ссылки с помощью полученного response
+              const pageLink = document.querySelector('.result__link'); // Получаем ссылку по классу или идентификатору
+              const newPageId = response; // Предположим, что response содержит новый pageId
+
+              // Проверяем, что ссылка найдена, и обновляем атрибут href
+              if (pageLink) {
+                pageLink.href = `https://confluence.skillbox.pro/pages/viewpage.action?pageId=${newPageId}`;
+              }
+            },
+            error: function(xhr, status, error) {
+              // Обработка ошибок
+            }
+          });
+        };
+
+        // form
+        const inputs = form.querySelectorAll('.input');
+        const formButton = form.querySelector('.form__button');
+        const waitButton = form.querySelector('.wait__button');
+
+        const toggleInfo = (evt) => {
+            evt.preventDefault();
+
+            if (evt.type === 'submit' && evt.submitter === formButton) {
+                const formData = new FormData(evt.target);
+
+                startTime = new Date();
+
+                // 300 (ms) — время, которое ждем, пока бэк подставит в разметку количество отчетов
+                setTimeout(updateProgress, 300);
+                run(formData);
+                handleForm();
+
+            } else {
+                progressBar.removeAttribute('style');
+
+                clearInterval(interval);
+                interval = null;
+            }
+
+            inputs.forEach(input => input.disabled = !input.disabled);
+            formButton.classList.toggle('form__button--hidden');
+        }
+
+        form.addEventListener('submit', toggleInfo);
+        waitButton.addEventListener('click', toggleInfo);
+    </script>
+</body>
 </html>

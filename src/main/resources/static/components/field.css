@@ -1,0 +1,84 @@
+.field__label {
+    position: relative;
+    display: block;
+}
+
+.field__input {
+    display: block;
+    width: 100%;
+    height: 56px;
+    padding: 23px 18px 10px;
+    border: 1px solid var(--stroke-main-color);
+    border-radius: 10px;
+    overflow: hidden;
+    color: var(--text-main-color);
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: var(--bg-secondary-color);
+    box-shadow: none;
+    transition: border-color .2s ease-in-out;
+    appearance: none;
+}
+
+.field__input::placeholder {
+    color: var(--text-disable-color);
+    opacity: 1; /* Firefox */
+}
+
+
+
+.field__input:focus-visible {
+    border-color: var(--stroke-secondary-color);
+    background-color: var(--bg-main-color);
+    outline: none;
+}
+
+.field__input:focus-visible ~ .field__name {
+    font-size: 11px;
+    transform: translateY(-80%);
+}
+
+.field__input:not(:placeholder-shown) ~ .field__name {
+    font-size: 11px;
+    transform: translateY(-80%);
+}
+
+.field__input:not(:disabled):hover {
+    border-color: var(--stroke-secondary-color);
+}
+
+.field__input:-webkit-autofill,
+.field__input:-webkit-autofill:hover,
+.field__input:-webkit-autofill:focus-visible {
+    -webkit-text-fill-color: var(--text-main-color);
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-secondary-color) inset;
+}
+
+.field__input:disabled {
+    border-color: var(--stroke-main-color);
+    color: var(--text-disable-color);
+    background-color: var(--bg-secondary-color);
+}
+
+.field__name {
+    position: absolute;
+    top: 20px;
+    left: 18px;
+    color: var(--text-secondary-color);
+    font-size: 16px;
+    line-height: 1;
+    transition: all .2s ease-in-out;
+    pointer-events: none;
+}
+
+.field--active .field__name {
+    font-size: 11px;
+    transform: translateY(-80%);
+}
+
+.field__input:disabled ~ .field__name {
+    color: var(--text-disable-color);
+}
