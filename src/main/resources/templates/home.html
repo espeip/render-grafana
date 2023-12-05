@@ -295,14 +295,13 @@
 
         const toggleInfo = (evt) => {
             evt.preventDefault();
-
             if (evt.type === 'submit' && evt.submitter === formButton) {
                 const formData = new FormData(evt.target);
 
                 startTime = new Date();
 
-                updateProgress();
                 run(formData);
+                updateProgress();
                 handleForm();
 
             } else {
@@ -316,13 +315,14 @@
             formButton.classList.toggle('form__button--hidden');
         }
 
-        const resetPage = () => {
-            toggleInfo();
+        const resetPage = (evt) => {
+            toggleInfo(evt);
             form.reset();
         }
 
         form.addEventListener('submit', toggleInfo);
         waitButton.addEventListener('click', toggleInfo);
+
         returnButton.addEventListener('click', resetPage);
     </script>
 </body>
